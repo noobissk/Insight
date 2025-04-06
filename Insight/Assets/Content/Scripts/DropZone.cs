@@ -13,7 +13,8 @@ public class DropZone : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         var dropped = eventData.pointerDrag;
-        if (dropped != null)
+        Debug.Log(dropped.GetComponent<DraggableUI>() != null);
+        if (dropped != null && dropped.GetComponent<DraggableUI>() != null)
         {
             Debug.Log($"Dropped {dropped.name} on {name}");
 

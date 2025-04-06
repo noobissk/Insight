@@ -6,6 +6,7 @@ public class LevelController : MonoBehaviour
 {
     private PlayerCMD _playerCMD;
     [SerializeField] private TurnController _turnController;
+    [SerializeField] private GridController _gridController;
     [SerializeField] private Transform _dropZone;
     [SerializeField] private InGameMenu _inGameMenu;
 
@@ -23,6 +24,7 @@ public class LevelController : MonoBehaviour
         }
 
         _playerCMD.LoadCommands(playerTurns.ToArray());
+
         _turnController.maxTurns = playerTurns.Count;
         _turnController.StartTurns();
 

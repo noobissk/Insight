@@ -6,8 +6,8 @@ using PlayerTurns;
 public class TurnController : MonoBehaviour
 {
     public static TurnController Singleton;
-    private List<TurnUser> _turnUsers = new List<TurnUser>();
-    [SerializeField] private float _timePerTurn = 0.5f;
+    public List<TurnUser> turnUsers = new List<TurnUser>();
+    [SerializeField] public float timePerTurn = 0.5f;
     // [SerializeField] Transform _playerTurnsParent;
     // private PlayerTurn[] _playerTurns;
     [HideInInspector] public int maxTurns;
@@ -26,17 +26,17 @@ public class TurnController : MonoBehaviour
 #endregion
     void OnDestroy()
     {
-        _turnUsers.Clear();
+        turnUsers.Clear();
     }
 
 #region Register / Unregister Turn users
     public void RegisterTurnUser(TurnUser i_turnUser)
     {
-        _turnUsers.Add(i_turnUser);
+        turnUsers.Add(i_turnUser);
     }
     public void UnRegisterTurnUser(TurnUser i_turnUser)
     {
-        _turnUsers.Remove(i_turnUser);
+        turnUsers.Remove(i_turnUser);
     }
 #endregion
 #region Turns
@@ -52,17 +52,20 @@ public class TurnController : MonoBehaviour
 
     private IEnumerator Turn_Routine()
     {
-        foreach (TurnUser turnUser in _turnUsers)
+        foreach (TurnUser turnUser in turnUsers)
         {
+            // if (turnUser.logicPosition != turnUser.visualPosition)
+                // turnUser.visualPosition = turnUser.logicPosition;
             turnUser.Turn();
         }
-        Debug.Log("Current turn: " + turnID);
+        // Debug.Log("Current turn: " + turnID);
 
-        yield return new WaitForSeconds(_timePerTurn);
+        yield return new WaitForSeconds(timePerTurn);
         
         turnID++;
         if (turnID != maxTurns)
             StartTurns();
     }
+
 #endregion
 }

@@ -6956,6 +6956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _turnController: {fileID: 1806197114}
+  _gridController: {fileID: 1348388994}
   _dropZone: {fileID: 2016249343}
   _inGameMenu: {fileID: 1055065004}
 --- !u!4 &1340717512
@@ -7017,12 +7018,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8a296296664434c9f6b1b8612d1a3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapFileName: tilemap.json
+  mapFileName: Level_1.json
   wallMask:
     serializedVersion: 2
     m_Bits: 456
   gridSize: {x: 49, y: 31}
   gridScale: 1
+  playerPosition: {x: 0, y: 0}
+  goalPosition: {x: 0, y: 0}
 --- !u!1 &1421494834
 GameObject:
   m_ObjectHideFlags: 0
@@ -7033,6 +7036,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1421494835}
   - component: {fileID: 1421494836}
+  - component: {fileID: 1421494837}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -7069,8 +7073,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b50f1b8b2abf760498df7ca52fae1192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _grid: {fileID: 1348388994}
-  logicPosition: {x: 0, y: 0, z: 0}
+  visual: {fileID: 1462100357}
+  logicPosition: {x: 0, y: 0}
+  visualPosition: {x: 0, y: 0}
+--- !u!114 &1421494837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421494834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9abe689bf0b2dce4a832de6e4f17faee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1446187385
 GameObject:
   m_ObjectHideFlags: 0
@@ -48904,7 +48921,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 35
+  m_ScrollSensitivity: 15
   m_Viewport: {fileID: 1641826941}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 0}
@@ -49121,7 +49138,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a874a170de7b3944c849526715cd3131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timePerTurn: 0.5
+  turnUsers: []
+  timePerTurn: 0.5
+  maxTurns: 0
 --- !u!1 &1821097930
 GameObject:
   m_ObjectHideFlags: 0
@@ -49544,7 +49563,7 @@ GameObject:
   - component: {fileID: 2016249344}
   - component: {fileID: 2016249345}
   m_Layer: 5
-  m_Name: DropZone - Content
+  m_Name: DropZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49584,8 +49603,8 @@ MonoBehaviour:
   m_Padding:
     m_Left: 20
     m_Right: 20
-    m_Top: 20
-    m_Bottom: 20
+    m_Top: 50
+    m_Bottom: 50
   m_ChildAlignment: 1
   m_Spacing: 20
   m_ChildForceExpandWidth: 0
