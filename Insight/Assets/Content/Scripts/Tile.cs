@@ -2,15 +2,15 @@ using System;
 using UnityEngine;
 
 
-namespace MiguelGrid
+namespace MiguelTools
 {
     public enum TileType
     {
         Empty,
         Wall,
+        Goal,
         Player,
         Enemy,
-        Goal,
     }
     public class Tile
     {
@@ -18,6 +18,12 @@ namespace MiguelGrid
         public override string ToString()
         {
             return type.ToString();
+        }
+
+        public Tile() { }
+        public Tile(TileType i_type)
+        {
+            type = i_type;
         }
     }
 

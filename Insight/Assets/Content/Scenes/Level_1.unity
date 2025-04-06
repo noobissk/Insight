@@ -192,7 +192,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &261180352
 Transform:
   m_ObjectHideFlags: 0
@@ -317,7 +317,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 2.9270833
+  orthographic size: 2.140625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -502,7 +502,8 @@ GameObject:
   - component: {fileID: 816096346}
   - component: {fileID: 816096348}
   - component: {fileID: 816096347}
-  m_Layer: 0
+  - component: {fileID: 816096349}
+  m_Layer: 6
   m_Name: Map_walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6138,6 +6139,44 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &816096349
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816096345}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
+  m_UseDelaunayMesh: 0
 --- !u!1 &900875759
 GameObject:
   m_ObjectHideFlags: 0
@@ -6223,7 +6262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 913044601}
   - component: {fileID: 913044602}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6978,6 +7017,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8a296296664434c9f6b1b8612d1a3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapFileName: tilemap.json
+  wallMask:
+    serializedVersion: 2
+    m_Bits: 456
   gridSize: {x: 49, y: 31}
   gridScale: 1
 --- !u!1 &1421494834
@@ -7026,7 +7069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b50f1b8b2abf760498df7ca52fae1192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _grid: {fileID: 993694074}
+  _grid: {fileID: 1348388994}
   logicPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1446187385
 GameObject:
@@ -49576,7 +49619,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2048771533}
   - component: {fileID: 2048771534}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

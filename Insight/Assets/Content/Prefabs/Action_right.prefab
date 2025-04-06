@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5144658053266478246}
   - component: {fileID: 683365531346102511}
   - component: {fileID: 8057347866596356681}
+  - component: {fileID: 5151539460249289842}
   m_Layer: 5
   m_Name: Action_right
   m_TagString: Untagged
@@ -89,3 +90,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiActions: {fileID: 0}
+  dropZone: {fileID: 0}
+--- !u!114 &5151539460249289842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4588531604572927872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df9eea936d0f4a46950cf0c8efefb2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -7,7 +7,6 @@ using PlayerTurns;
 public class PlayerCMD : TurnUser
 {
     [SerializeField] private GridController _grid;
-    public Vector3Int logicPosition;
     private PlayerTurn[] _commands;
     void Start()
     {
@@ -21,5 +20,14 @@ public class PlayerCMD : TurnUser
     public override void Turn()
     {
         _commands[TurnController.Singleton.turnID](this, _grid);
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (!Application.isPlaying)
+            return;
+        Gizmos.color = Color.blue;
+
+        Gizmos.DrawCube(_grid.grid.GetWorldPosition(logicPosition), Vector3.one * 0.1f);
     }
 }

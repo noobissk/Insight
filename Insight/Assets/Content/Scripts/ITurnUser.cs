@@ -3,6 +3,7 @@ using UnityEngine;
 
 public abstract class TurnUser : MonoBehaviour
 {
+    public Vector2Int logicPosition;
     protected virtual void Initialize()
     {
         TurnController.Singleton.RegisterTurnUser(this);

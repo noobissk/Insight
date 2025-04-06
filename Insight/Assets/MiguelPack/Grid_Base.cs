@@ -18,7 +18,7 @@ public class Grid_Base<TGridObject>
     public TGridObject[,] grid;
     private TextMesh[,] grid_Debug;
     
-    public Grid_Base(Transform _transform, Vector3 _position, Vector2Int _gridSize, float _gridScale, bool _useDebug, Func<TGridObject> CreateGridObject)
+    public Grid_Base(Transform _transform, Vector3 _position, Vector2Int _gridSize, float _gridScale, bool _useDebug, Func<int, int, TGridObject> CreateGridObject)
     {
         transform = _transform;
         position = _position;
@@ -34,7 +34,7 @@ public class Grid_Base<TGridObject>
         {
             for (int y = 0; y < gridSize.y; y++)
             {
-                grid[x, y] = CreateGridObject();
+                grid[x, y] = CreateGridObject(x, y);
                 grid_Debug[x, y] = CreateWorldTextObject($"{x}, {y}\n" + grid[x, y]?.ToString(), 40, transform, GetWorldPosition(x, y), Color.white);
             }
         }
@@ -162,8 +162,17 @@ public class Grid_Base<TGridObject>
         {
             for (int y = 0; y < gridSize.y; y++)
             {
-                grid_Debug[x, y].text = $"{x}, {y}\n" + grid[x, y]?.ToString();
-                grid_Debug[x, y].gameObject.SetActive(useDebug);
+                if (grid[x, y]?.ToString() != "Empty")
+                {
+                    grid_Debug[x, y].text = $"{x}, {y}\n" + grid[x, y]?.ToString();
+                    grid_Debug[x, y].gameObject.SetActive(useDebug);
+                }
+                else
+                {
+                    grid_Debug[x, y].text = "";
+                    grid_Debug[x, y].gameObject.SetActive(false);
+                }
+                
             }
         }
     }

@@ -23,6 +23,7 @@ public class LevelController : MonoBehaviour
         }
 
         _playerCMD.LoadCommands(playerTurns.ToArray());
+        _turnController.maxTurns = playerTurns.Count;
         _turnController.StartTurns();
 
         playerTurns.Clear();

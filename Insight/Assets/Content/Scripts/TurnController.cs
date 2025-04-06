@@ -10,6 +10,7 @@ public class TurnController : MonoBehaviour
     [SerializeField] private float _timePerTurn = 0.5f;
     // [SerializeField] Transform _playerTurnsParent;
     // private PlayerTurn[] _playerTurns;
+    [HideInInspector] public int maxTurns;
     public int turnID { get; private set; }
 
 #region Init
@@ -55,11 +56,13 @@ public class TurnController : MonoBehaviour
         {
             turnUser.Turn();
         }
+        Debug.Log("Current turn: " + turnID);
 
         yield return new WaitForSeconds(_timePerTurn);
         
         turnID++;
-        StartTurns();
+        if (turnID != maxTurns)
+            StartTurns();
     }
 #endregion
 }

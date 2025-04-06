@@ -25,7 +25,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         // Make the object not block raycasts so you can drop onto other UI
         _originalTransform = (RectTransform)_rectTransform.parent;
-        _rectTransform.parent = _canvas.transform;
+        _rectTransform.SetParent(_canvas.transform);
         _canvasGroup.blocksRaycasts = false;
         _canvasGroup.alpha = 0.6f; // Optional visual feedback
     
@@ -46,7 +46,7 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         if (i_eventData.pointerEnter == null || i_eventData.pointerEnter.GetComponent<IDropHandler>() == null)
         {
             // snap back to original position
-            _rectTransform.parent = _originalTransform;
+            _rectTransform.SetParent(_originalTransform);
             _rectTransform.anchoredPosition = _originalPosition;
         }
     }
