@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5144658053266478246}
   - component: {fileID: 683365531346102511}
   - component: {fileID: 8057347866596356681}
-  - component: {fileID: 5151539460249289842}
+  - component: {fileID: 6019012257975809128}
   m_Layer: 5
   m_Name: Action_right
   m_TagString: Untagged
@@ -89,9 +89,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812c79275fd0cfc4e806fb9c13a6773c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audioClipOnBegin: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
+  _audioClipOnEnd: {fileID: 8300000, guid: 6e8772b49f34d402a90016ed445d8a2f, type: 3}
+  _audioPrefab: {fileID: 4736620578883658568, guid: d360906f63b531842b4685af61a39744, type: 3}
   uiActions: {fileID: 0}
   dropZone: {fileID: 0}
---- !u!114 &5151539460249289842
+--- !u!114 &6019012257975809128
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,6 +103,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4588531604572927872}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8df9eea936d0f4a46950cf0c8efefb2c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5eca59f9b00483f4391c9b1bae984c1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vector: {x: 1, y: 0}

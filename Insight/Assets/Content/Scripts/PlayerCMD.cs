@@ -9,7 +9,7 @@ public class PlayerCMD : TurnUser
     private PlayerTurn[] _commands;
     void Start()
     {
-        logicPosition = GridController.Singleton.playerPosition;
+        // logicPosition = GridController.Singleton.playerPosition;
         Initialize();
     }
     public void LoadCommands(PlayerTurn[] i_playerTurns)

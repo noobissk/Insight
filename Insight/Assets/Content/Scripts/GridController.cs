@@ -3,12 +3,13 @@ using MiguelTools;
 using MyBox;
 using System.IO;
 using System;
+using UnityEngine.SceneManagement;
 
 
 public class GridController : MonoBehaviour
 {
     public static GridController Singleton;
-    public string mapFileName = "tilemap.json";
+    string _mapFileName = "tilemap.json";
     public LayerMask wallMask;
     public Vector2Int gridSize = new Vector2Int(30, 26);
     public float gridScale;
@@ -28,14 +29,16 @@ public class GridController : MonoBehaviour
         }
         Singleton = this;
 
-        if (!File.Exists(Path.Combine(Application.persistentDataPath, mapFileName)))
+        _mapFileName = SceneManager.GetActiveScene().name + ".json";
+
+        if (!File.Exists(Path.Combine(Application.persistentDataPath, _mapFileName)))
         {
-            // grid = new Grid_Base<Tile>(transform, Vector3.zero, gridSize, gridScale, false);
+            grid = new Grid_Base<Tile>(transform, Vector3.zero, gridSize, gridScale, false);
             SaveTilemap();
         }
 
-        _map = LoadMap(mapFileName);
-        grid = new Grid_Base<Tile>(transform, Vector3.zero, gridSize, gridScale, true, CreateTile);
+        _map = LoadMap(_mapFileName);
+        grid = new Grid_Base<Tile>(transform, Vector3.zero, gridSize, gridScale, false, CreateTile);
     }
 
     private Tile CreateTile(int x, int y)
@@ -97,7 +100,7 @@ public class GridController : MonoBehaviour
         mapData.tiles = ArrayConverter.Flatten(map);
 
         string json = JsonUtility.ToJson(mapData);
-        File.WriteAllText(Path.Combine(Application.persistentDataPath, mapFileName), json);
+        File.WriteAllText(Path.Combine(Application.persistentDataPath, _mapFileName), json);
     }
 
     public int[,] LoadMap(string i_mapName)

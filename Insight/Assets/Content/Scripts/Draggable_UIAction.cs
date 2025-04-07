@@ -14,6 +14,8 @@ public class Draggable_UIAction : DraggableUI
 
     public override void OnEndDrag(PointerEventData i_eventData)
     {
+        Instantiate(_audioPrefab).PlayAudio(_audioClipOnEnd);
+
         _canvasGroup.blocksRaycasts = true;
         _canvasGroup.alpha = 1f;
 
